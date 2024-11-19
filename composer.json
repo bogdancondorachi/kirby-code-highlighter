@@ -1,0 +1,31 @@
+{
+  "name": "bogdancondorachi/kirby-code-highlighter",
+  "description": "Server-side syntax highlighter for Kirby CMS.",
+  "type": "kirby-plugin",
+  "license": "MIT",
+  "version": "1.0.0-beta.1",
+  "homepage": "https://github.com/bogdancondorachi/kirby-code-highlighter",
+  "authors": [
+    {
+      "name": "Bogdan Condorachi",
+      "email": "bogdan.condorachi@gmail.com",
+      "homepage": "https://plugins.getkirby.com/bogdancondorachi"
+    }
+  ],
+  "require": {
+    "php": ">=8.2",
+    "phiki/phiki": "^0.3.2",
+    "getkirby/composer-installer": "^1.2"
+  },
+  "replace": {
+    "league/commonmark": "*"
+  },
+  "config": {
+    "allow-plugins": {
+      "getkirby/composer-installer": true
+    }
+  },
+  "extra": {
+    "installer-name": "code-highlighter"
+  }
+}

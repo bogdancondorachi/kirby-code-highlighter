@@ -1,0 +1,57 @@
+{
+    "name": "phiki/phiki",
+    "description": "Syntax highlighting using TextMate grammars in PHP.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ryan Chandler",
+            "email": "support@ryangjchandler.co.uk",
+            "role": "Developer",
+            "homepage": "https://ryangjchandler.co.uk"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "league/commonmark": "^2.5.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Phiki\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Phiki\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require-dev": {
+        "symfony/var-dumper": "^7.1.6",
+        "pestphp/pest": "^3.5.1",
+        "laravel/pint": "^1.18.1",
+        "phpstan/phpstan": "^1.12.7",
+        "phpstan/extension-installer": "^1.4.3",
+        "illuminate/support": "^11.30"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "scripts": {
+        "sample": [
+            "Composer\\Config::disableProcessTimeout",
+            "php -S 127.0.0.1:8080 ./resources/samples/sample.php"
+        ],
+        "serve": [
+            "Composer\\Config::disableProcessTimeout",
+            "php -S 127.0.0.1:8080 ./test-server.php"
+        ],
+        "update-sources": [
+            "Composer\\Config::disableProcessTimeout",
+            "php ./meta/update-sources.php"
+        ]
+    }
+}
