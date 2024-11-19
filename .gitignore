@@ -1,0 +1,6 @@
+# OS files
+.DS_Store
+
+# Development and Temporary files
+/tests
+composer.lock

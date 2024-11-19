@@ -1,0 +1,32 @@
+name: field.blocks.code.name
+icon: code
+wysiwyg: true
+preview: code
+fields:
+  code:
+    label: field.blocks.code.name
+    type: textarea
+    placeholder: field.blocks.code.placeholder
+    buttons: false
+    font: monospace
+
+  language:
+    label: field.blocks.code.language
+    type: select
+    width: 1/2
+    default: text
+    options:
+      type: query
+      query: kirby.option('bogdancondorachi.code-highlighter.block.languages')
+      text: "{{ item.value }}"
+      value: "{{ item.key }}"
+
+  theme:
+    label: Theme
+    type: select
+    width: 1/2
+    options:
+      type: query
+      query: kirby.option('bogdancondorachi.code-highlighter.block.themes')
+      text: "{{ item.value }}"
+      value: "{{ item.key }}"
