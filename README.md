@@ -1,6 +1,8 @@
 ![Kirby Code Highlighter](.github/preview.png)
 
-# Kirby Code Highlighter
+![Version](https://img.shields.io/packagist/v/bogdancondorachi/kirby-code-highlighter?style=for-the-badge&label=Version&labelColor=3d444d&color=096BDE)
+![Dependency](https://img.shields.io/badge/kirby-%5E4.0-F4E162?style=for-the-badge&labelColor=3d444d)
+![Dependency](https://img.shields.io/packagist/dependency-v/bogdancondorachi/kirby-code-highlighter/php?style=for-the-badge&label=PHP&labelColor=3d444d&color=7C72FF)
 
 > [!NOTE]
 > A server-side syntax highlighter plugin for Kirby CMS, powered by [Phiki](https://github.com/phikiphp/phiki), that uses TextMate grammars and VS Code themes to generate syntax-highlighted code within code blocks and KirbyText.
