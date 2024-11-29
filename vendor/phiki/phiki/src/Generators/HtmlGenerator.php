@@ -45,7 +45,6 @@ class HtmlGenerator implements OutputGeneratorInterface
     {
         $preClasses = array_filter([
             'phiki',
-            $this->grammarName ? "language-$this->grammarName" : null,
             $this->getDefaultTheme()->name,
             count($this->themes) > 1 ? 'phiki-themes' : null,
         ]);
@@ -124,7 +123,7 @@ class HtmlGenerator implements OutputGeneratorInterface
         $styleString = implode(';', array_filter($tokenStyles));
 
         return sprintf(
-            '<span class="token"%s>%s</span>',
+            '<span%s>%s</span>',
             $styleString ? " style=\"$styleString\"" : null,
             htmlspecialchars($token->token->text)
         );
