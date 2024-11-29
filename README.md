@@ -101,6 +101,26 @@ Customize the languages and themes available in Kirby’s code blocks:
 - [Supported Languages](https://shiki.matsu.io/languages)
 - [Supported Themes](https://shiki.matsu.io/themes)
 
+### Further Block Styling
+You can customize the block styles to better fit your design preferences. Below is an example of CSS you can use as a starting point:
+
+```css
+.phiki {
+  margin: 2rem 0;
+  padding: 1rem;
+  font-size: .875rem;
+  line-height: 1.5rem;
+  overflow: auto;
+  border-radius: .25rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.phiki .line-number {
+  margin-right: 1rem;
+  text-align: right;
+}
+```
+
 ## 🙏 Credits
 - [Ryan Chandler](https://github.com/ryangjchandler) for his excellent work on porting Shiki to PHP via [Phiki](https://github.com/phikiphp/phiki).
 - [Johann Schopplich](https://github.com/johannschopplich) for his [Kirby Highlighter](https://github.com/johannschopplich/kirby-highlighter), which served as base for this project.
