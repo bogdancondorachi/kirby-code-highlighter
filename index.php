@@ -7,7 +7,7 @@ use Kirby\Toolkit\Str;
 
 Kirby::plugin('bogdancondorachi/code-highlighter', [
   'options' => [
-    'theme' => 'github-dark',
+    'theme' => 'github-dark-dimmed',
     'gutter' => false,
     'block' => [
       'languages' => [
