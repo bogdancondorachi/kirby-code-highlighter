@@ -29,7 +29,7 @@ git submodule add https://github.com/bogdancondorachi/kirby-code-highlighter.git
 
 ### Manual
 
-[Download](https://api.github.com/repos/bogdancondorachi/kirby-code-highlighter/zipball) and extract to:<br />`/site/plugins/code-highlighter`
+[Download](https://api.github.com/repos/bogdancondorachi/kirby-code-highlighter/zipball) and extract to: `/site/plugins/code-highlighter`
 
 ## ⚙️ Usage
 
@@ -43,6 +43,7 @@ blocks:
   fieldsets:
     - code
 ```
+*By default, the code block uses the default theme, but a theme selector is available if you wish to apply different themes to individual blocks. You can also customize the available language and theme options through the configuration settings.*
 
 ### KirbyText
 Embed syntax-highlighted code directly in KirbyText fields:
@@ -57,6 +58,7 @@ Or use the plugin's custom KirbyTag with support for base64-encoded content:
 ```
 (code: ZWNobyAiSGVsbG8sIHdvcmxkISI7 lang: php theme: github-light)
 ```
+*By default, the code tag applies the default theme. However, you can use the theme attribute to specify a different `theme` for individual code blocks.*
 
 ## 🔧 Configuration
 These options allow you to customize themes, language support, line numbering, and block behavior. All options are defined in your `config.php` file.
@@ -97,13 +99,12 @@ Customize the languages and themes available in Kirby’s code blocks:
 ],
 ```
 
-### Explore Supported Options
+#### Explore Supported Options
 - [Supported Languages](https://shiki.matsu.io/languages)
 - [Supported Themes](https://shiki.matsu.io/themes)
 
-### Further Block Styling
-You can customize the block styles to better fit your design preferences. Below is an example of CSS you can use as a starting point:
-
+### Front-end Block Styling
+Customize the block style to match your design. Here's an example:
 ```css
 .phiki {
   margin: 2rem 0;
