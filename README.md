@@ -63,14 +63,27 @@ Or use the plugin's custom KirbyTag with support for base64-encoded content:
 ## 🔧 Configuration
 These options allow you to customize themes, language support, line numbering, and block behavior. All options are defined in your `config.php` file.
 
-### Default Theme
-Set the default theme for syntax highlighting:
+### Theme
+Set the default theme:
 
 ```php
 'bogdancondorachi.code-highlighter' => [
   'theme' => 'github-dark-dimmed',
 ],
 ```
+
+### Dual Themes
+Set the default themes for light/dark mode:
+
+```php
+'bogdancondorachi.code-highlighter' => [
+  'themes' => [
+    'light' => 'github-light',
+    'dark' => 'github-dark'
+  ]
+],
+```
+*You'll need to [add css](#front-end-support-dual-themes) in order to support the dark theme*
 
 ### Line Numbering
 Enable line numbers in your highlighted code blocks:
@@ -82,7 +95,7 @@ Enable line numbers in your highlighted code blocks:
 ```
 
 ### Custom Languages and Themes for Code Blocks
-Customize the languages and themes available in Kirby’s code blocks:
+Customize the languages and themes available in Kirby’s code block:
 
 ```php
 'bogdancondorachi.code-highlighter' => [
@@ -105,6 +118,7 @@ Customize the languages and themes available in Kirby’s code blocks:
 
 ### Front-end Block Styling
 Customize the block style to match your design. Here's an example:
+
 ```css
 .phiki {
   margin: 2rem 0;
@@ -119,6 +133,22 @@ Customize the block style to match your design. Here's an example:
 .phiki .line-number {
   margin-right: 1rem;
   text-align: right;
+}
+```
+
+### Front-end Support Dual Themes
+If you're using the [dual themes](#dual-themes) you'll need to add the following css in order to apply the dark theme:
+
+```css
+@media (prefers-color-scheme: dark) {
+  .phiki,
+  .phiki span {
+    color: var(--phiki-dark-color) !important;
+    background-color: var(--phiki-dark-background-color) !important;
+    font-style: var(--phiki-dark-font-style) !important;
+    font-weight: var(--phiki-dark-font-weight) !important;
+    text-decoration: var(--phiki-dark-text-decoration) !important;
+  }
 }
 ```
 
