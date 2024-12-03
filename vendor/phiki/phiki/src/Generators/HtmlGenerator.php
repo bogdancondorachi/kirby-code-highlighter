@@ -36,7 +36,7 @@ class HtmlGenerator implements OutputGeneratorInterface
         return sprintf(
             '<div class="phiki-wrapper"%s style="%s">%s</div>',
             $this->grammarName ? " data-language=\"$this->grammarName\"" : null,
-            implode(';', $wrapperStyles),
+            implode($wrapperStyles),
             $this->buildPre($tokens)
         );
     }
@@ -67,7 +67,7 @@ class HtmlGenerator implements OutputGeneratorInterface
             '<pre class="%s"%s style="%s">%s</pre>',
             implode(' ', $preClasses),
             $this->grammarName ? " data-language=\"$this->grammarName\"" : null,
-            implode(';', $preStyles),
+            implode($preStyles),
             $this->buildCode($tokens)
         );
     }
@@ -100,8 +100,9 @@ class HtmlGenerator implements OutputGeneratorInterface
     {
         $lineNumberColor = $this->getDefaultTheme()->colors['editorLineNumber.foreground'] ?? null;
 
-        $lineNumberStyles = $lineNumberColor ? "color: $lineNumberColor; " : null;
-        $lineNumberStyles .= '-webkit-user-select: none; user-select: none;';
+        $lineNumberStyles = $lineNumberColor ? "color:$lineNumberColor;" : null;
+        $lineNumberStyles .= '-webkit-user-select:none;';
+        $lineNumberStyles .= 'user-select:none';
 
         return sprintf(
             '<span class="line-number" style="%s">%2d</span>',
@@ -120,7 +121,7 @@ class HtmlGenerator implements OutputGeneratorInterface
             }
         }
 
-        $styleString = implode(';', array_filter($tokenStyles));
+        $styleString = implode(array_filter($tokenStyles));
 
         return sprintf(
             '<span%s>%s</span>',

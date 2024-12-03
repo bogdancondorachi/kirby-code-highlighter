@@ -50,7 +50,7 @@ readonly class TokenSettings
         $vars = [];
 
         foreach ($styles as $property => $value) {
-            $vars[] = "--phiki-{$prefix}-{$property}: {$value}";
+            $vars[] = "--phiki-{$prefix}-{$property}:{$value}";
         }
 
         return implode(';', $vars);
@@ -97,7 +97,7 @@ readonly class TokenSettings
         $styleString = '';
 
         foreach ($styles as $property => $value) {
-            $styleString .= "{$property}: {$value};";
+            $styleString .= "{$property}:{$value};";
         }
 
         return $styleString;
