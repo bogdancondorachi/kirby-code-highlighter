@@ -63,7 +63,7 @@ Or use the plugin's custom KirbyTag with support for base64-encoded content:
 ## 🔧 Configuration
 These options allow you to customize themes, language support, line numbering, and block behavior. All options are defined in your `config.php` file.
 
-### Theme
+### Default Theme
 Set the default theme:
 
 ```php
@@ -72,18 +72,41 @@ Set the default theme:
 ],
 ```
 
-### Dual Themes
-Set the default themes for light/dark mode:
+### Light/Dark Dual Themes
+Set themes for light and dark mode:
 
 ```php
 'bogdancondorachi.code-highlighter' => [
   'themes' => [
     'light' => 'github-light',
     'dark' => 'github-dark'
+    // any number of themes
   ]
 ],
 ```
-*You'll need to [add css](#front-end-support-dual-themes) in order to support the dark theme*
+
+Add one of the following CSS to make it reactive to your site's theme:
+
+#### Query-based Dark Mode
+```css
+@media (prefers-color-scheme: dark) {
+  .phiki,
+  .phiki span {
+    color: var(--phiki-dark) !important;
+    background-color: var(--phiki-dark-bg) !important;
+  }
+}
+```
+
+#### Class-based Dark Mode
+```css
+html.dark .phiki,
+html.dark .phiki span {
+  color: var(--phiki-dark) !important;
+  background-color: var(--phiki-dark-bg !important;
+}
+```
+*If you revert to a single default theme, delete the added CSS.*
 
 ### Line Numbering
 Enable line numbers in your highlighted code blocks:
@@ -111,6 +134,7 @@ Customize the languages and themes available in Kirby’s code block:
   ],
 ],
 ```
+*If dual themes are set, the block theme selector won't work.*
 
 #### Explore Supported Options
 - [Supported Languages](https://shiki.matsu.io/languages)
@@ -133,22 +157,6 @@ Customize the block style to match your design. Here's an example:
 .phiki .line-number {
   margin-right: 1rem;
   text-align: right;
-}
-```
-
-### Front-end Support Dual Themes
-If you're using the [dual themes](#dual-themes) you'll need to add the following css in order to apply the dark theme:
-
-```css
-@media (prefers-color-scheme: dark) {
-  .phiki,
-  .phiki span {
-    color: var(--phiki-dark-color) !important;
-    background-color: var(--phiki-dark-background-color) !important;
-    font-style: var(--phiki-dark-font-style) !important;
-    font-weight: var(--phiki-dark-font-weight) !important;
-    text-decoration: var(--phiki-dark-text-decoration) !important;
-  }
 }
 ```
 
