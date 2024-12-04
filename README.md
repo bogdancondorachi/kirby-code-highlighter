@@ -73,40 +73,52 @@ Set the default theme:
 ```
 
 ### Light/Dark Dual Themes
-Set themes for light and dark mode:
+Set dual themes for light/dark mode:
 
 ```php
 'bogdancondorachi.code-highlighter' => [
   'themes' => [
     'light' => 'github-light',
     'dark' => 'github-dark'
-    // any number of themes
   ]
 ],
 ```
 
-Add one of the following CSS to make it reactive to your site's theme:
+Add one of the CSS snippet's to make it reactive to your site's theme:
 
 #### Query-based Dark Mode
 ```css
+@media (prefers-color-scheme: light) {
+  .phiki,
+  .phiki span {
+    color: var(--phiki-light);
+    background-color: var(--phiki-light-bg);
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   .phiki,
   .phiki span {
-    color: var(--phiki-dark) !important;
-    background-color: var(--phiki-dark-bg) !important;
+    color: var(--phiki-dark);
+    background-color: var(--phiki-dark-bg);
   }
 }
 ```
 
 #### Class-based Dark Mode
 ```css
+html.light .phiki,
+html.light .phiki span {
+  color: var(--phiki-light);
+  background-color: var(--phiki-light-bg);
+}
+
 html.dark .phiki,
 html.dark .phiki span {
-  color: var(--phiki-dark) !important;
-  background-color: var(--phiki-dark-bg !important;
+  color: var(--phiki-dark);
+  background-color: var(--phiki-dark-bg);
 }
 ```
-*If you revert to a single default theme, delete the added CSS.*
 
 ### Line Numbering
 Enable line numbers in your highlighted code blocks:
@@ -134,7 +146,6 @@ Customize the languages and themes available in Kirby’s code block:
   ],
 ],
 ```
-*If dual themes are set, the block theme selector won't work.*
 
 #### Explore Supported Options
 - [Supported Languages](https://shiki.matsu.io/languages)
