@@ -50,7 +50,13 @@ readonly class TokenSettings
         $vars = [];
 
         foreach ($styles as $property => $value) {
-            $vars[] = "--phiki-{$prefix}-{$property}:{$value}";
+            $variable = match ($property) {
+                'background-color' => "--phiki-{$prefix}-bg",
+                'color' => "--phiki-{$prefix}",
+                default => "--phiki-{$prefix}-{$property}",
+            };
+    
+            $vars[] = "{$variable}:{$value}";
         }
 
         return implode(';', $vars);
