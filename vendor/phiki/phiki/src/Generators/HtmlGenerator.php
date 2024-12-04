@@ -93,15 +93,22 @@ class HtmlGenerator implements OutputGeneratorInterface
 
     private function buildLineNumber(int $lineNumber): string
     {
-        $lineNumberColor = $this->getDefaultTheme()->colors['editorLineNumber.foreground'] ?? null;
+        if (count($this->themes) > 1) {
+            foreach ($this->themes as $id => $theme) {
+                $lineNumberColor = $theme->colors['editorLineNumber.foreground'] ?? null;
+                $lineNumberStyles[] = $lineNumberColor ? "--phiki-{$id}: $lineNumberColor;" : null;
+            }
+        } else {
+            $lineNumberColor = $this->getDefaultTheme()->colors['editorLineNumber.foreground'] ?? null;
+            $lineNumberStyles[] = $lineNumberColor ? "color: $lineNumberColor;" : null;
+        }
 
-        $lineNumberStyles = $lineNumberColor ? "color:$lineNumberColor;" : null;
-        $lineNumberStyles .= '-webkit-user-select:none;';
-        $lineNumberStyles .= 'user-select:none';
+        $lineNumberStyles[] = '-webkit-user-select: none;';
+        $lineNumberStyles[] = 'user-select: none;';
 
         return sprintf(
             '<span class="line-number" style="%s">%2d</span>',
-            $lineNumberStyles,
+            implode(' ', $lineNumberStyles),
             $lineNumber
         );
     }
