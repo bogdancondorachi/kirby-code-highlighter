@@ -56,10 +56,10 @@ readonly class TokenSettings
                 default => "--phiki-{$prefix}-{$property}",
             };
     
-            $vars[] = "{$variable}:{$value}";
+            $vars[] = "{$variable}: {$value};";
         }
 
-        return implode(';', $vars);
+        return implode(' ', $vars);
     }
 
     public function toStyleArray(): array
@@ -100,12 +100,12 @@ readonly class TokenSettings
     public function toStyleString(): string
     {
         $styles = $this->toStyleArray();
-        $styleString = '';
+        $styleString = [];
 
         foreach ($styles as $property => $value) {
-            $styleString .= "{$property}:{$value};";
+            $styleString[] = "{$property}: {$value};";
         }
 
-        return $styleString;
+        return implode(' ', $styleString);
     }
 }
