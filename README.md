@@ -5,13 +5,13 @@
 ![Dependency](https://img.shields.io/packagist/dependency-v/bogdancondorachi/kirby-code-highlighter/php?style=for-the-badge&label=PHP&labelColor=3d444d&color=7C72FF)
 
 > [!NOTE]
-> A server-side syntax highlighter plugin for Kirby CMS, powered by [Phiki](https://github.com/phikiphp/phiki), that uses TextMate grammars and VS Code themes to generate syntax-highlighted code within code blocks and KirbyText.
+> A server-side syntax highlighter plugin for Kirby CMS, powered by [Phiki](https://github.com/phikiphp/phiki), that uses TextMate grammars and VS Code themes to generate syntax-highlighted code within Kirby's code block and KirbyText.
 
 ## ✨ Key Features
 - ⚡ **Performance:** Fast and powerful syntax highlighting.
-- 🚀 **Integration:** Works with Kirby code blocks and KirbyText.
-- 🌍 **Languages:** Over 200+ programming languages.
-- 🎨 **Themes:** Choose from 50+ stunning themes.
+- 🚀 **Integration:** Works with Kirby's code block and KirbyText.
+- 🌍 **Languages:** Over 200+ supported languages.
+- 🎨 **Themes:** Choose from 50+ VS Code themes.
 - 🔐 **Base64 Support:** Handles base64-encoded content.
 
 ## 📦 Installation
@@ -32,7 +32,7 @@ git submodule add https://github.com/bogdancondorachi/kirby-code-highlighter.git
 ## ⚙️ Usage
 
 ### Kirby Blocks Field
-This plugin overwrites the Kirby's native [`code` block](https://getkirby.com/docs/reference/panel/blocks/code), the output will be highlighted automatically.
+This plugin overwrites the Kirby's native [code block](https://getkirby.com/docs/reference/panel/blocks/code), the output will be highlighted automatically.
 
 ```yaml
 blocks:
@@ -40,7 +40,7 @@ blocks:
   fieldsets:
     - code
 ```
-*By default, the code block uses the [default theme](#default-theme), but a theme selector is available if you wish to apply different themes to individual blocks. You can also [customize](#custom-languages-and-themes-for-code-blocks) the available language and theme options.*
+*By default, the code block uses the [default theme](#default-theme). A theme selector is provided for applying different themes to individual blocks. You can also [customize](#customize-languages-and-themes-selection) the available languages and themes.*
 
 ### KirbyText
 Embed syntax-highlighted code directly in KirbyText fields:
@@ -56,10 +56,10 @@ Or use the plugin's custom KirbyTag with support for base64-encoded content:
 ```
 (code: ZWNobyAiSGVsbG8sIHdvcmxkISI7 lang: php theme: github-light)
 ```
-*By default, the code tag applies the default theme. However, you can use the theme attribute to specify a different theme for individual code blocks.*
+*By default, the code tag applies the [default theme](#default-theme). However, you can use the theme attribute to specify a different theme for individual code blocks.*
 
 ## 🔧 Configuration
-All options go into your `config.php` file:
+All options goes into your `config.php` file:
 
 ### Default Theme
 Set the default theme:
@@ -69,9 +69,10 @@ Set the default theme:
   'theme' => 'github-dark-dimmed',
 ],
 ```
+*Check out the [supported](#explore-supported-languages-and-themes) themes*
 
 ### Light/Dark Dual Themes
-Set the themes for light/dark mode:
+If you use light/dark mode on your website, you can set a default theme each individual mode:
 
 ```php
 'bogdancondorachi.code-highlighter' => [
@@ -82,7 +83,7 @@ Set the themes for light/dark mode:
 ],
 ```
 
-Add one of the CSS snippet's to make it reactive to your site's theme:
+In this case, you'll need to add one of the CSS snippet's to make it reactive to your site's theme:
 
 #### Query-based Dark Mode
 ```css
@@ -119,7 +120,7 @@ html.dark .phiki span {
 ```
 
 ### Line Numbering
-Enable line numbers in code blocks:
+Enable line numbers in your rendered code blocks:
 
 ```php
 'bogdancondorachi.code-highlighter' => [
@@ -128,7 +129,7 @@ Enable line numbers in code blocks:
 ```
 
 ### Customize Languages and Themes Selection
-Customize the languages and themes available in Kirby’s code block:
+Customize the languages and themes options available in Kirby’s code block:
 
 ```php
 'bogdancondorachi.code-highlighter' => [
@@ -145,12 +146,12 @@ Customize the languages and themes available in Kirby’s code block:
 ],
 ```
 
-#### Explore Supported Options
+#### Explore Supported Languages and Themes
 - [Supported Languages](https://shiki.matsu.io/languages)
 - [Supported Themes](https://shiki.matsu.io/themes)
 
 ### Front-end Block Styling
-Customize the block style to match your design. Here's an example:
+Further customize the block style to match your site's design. Here's an example:
 
 ```css
 .phiki {
@@ -170,7 +171,7 @@ Customize the block style to match your design. Here's an example:
 ```
 
 ## 🙏 Credits
-- [Ryan Chandler](https://github.com/ryangjchandler) for his excellent work on porting Shiki to PHP via [Phiki](https://github.com/phikiphp/phiki).
+- [Ryan Chandler](https://github.com/ryangjchandler) for porting Shiki to PHP via [Phiki](https://github.com/phikiphp/phiki), which powers this plugin.
 - [Johann Schopplich](https://github.com/johannschopplich) for his [Kirby Highlighter](https://github.com/johannschopplich/kirby-highlighter), which served as base for this project.
 
 ## 📜 License
