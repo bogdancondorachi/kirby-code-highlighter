@@ -6,7 +6,7 @@ $highlighter = new \Phiki\Phiki();
 
 // Extract block values and options
 $code   = $block->code()->fromBase64();
-$lang   = $block->language()->or('text');
+$lang   = $block->language()->or(option('bogdancondorachi.code-highlighter.language'));
 $theme  = $block->theme()->or(option('bogdancondorachi.code-highlighter.theme'));
 $themes = option('bogdancondorachi.code-highlighter.themes');
 $gutter = option('bogdancondorachi.code-highlighter.gutter');

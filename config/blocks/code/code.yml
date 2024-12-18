@@ -14,7 +14,6 @@ fields:
     label: field.blocks.code.language
     type: select
     width: 1/2
-    default: text
     options:
       type: query
       query: kirby.option('bogdancondorachi.code-highlighter.block.languages')
