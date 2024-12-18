@@ -52,6 +52,23 @@ Kirby::plugin('bogdancondorachi/code-highlighter', [
     ]
   ],
 
+  'api' => [
+    'routes' => [
+      [
+        'pattern' => 'code-highlighter',
+        'action'  => function () {
+          $options = [
+            'lang'   => option('bogdancondorachi.code-highlighter.language'),
+            'theme'  => option('bogdancondorachi.code-highlighter.theme'),
+            'gutter' => option('bogdancondorachi.code-highlighter.gutter'),
+          ];
+
+          return $options;
+        }
+      ]
+    ]
+  ],
+
   'tags' => require __DIR__ . '/config/tags.php',
   'hooks' => require __DIR__ . '/config/hooks.php',
   'fieldMethods' => require __DIR__ . '/config/methods.php',
