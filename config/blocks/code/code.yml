@@ -1,7 +1,7 @@
 name: field.blocks.code.name
 icon: code
 wysiwyg: true
-preview: code
+preview: codeHighlighter
 fields:
   code:
     label: field.blocks.code.name
@@ -14,7 +14,6 @@ fields:
     label: field.blocks.code.language
     type: select
     width: 1/2
-    default: text
     options:
       type: query
       query: kirby.option('bogdancondorachi.code-highlighter.block.languages')

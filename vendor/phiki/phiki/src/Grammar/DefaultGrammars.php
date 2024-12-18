@@ -251,7 +251,7 @@ abstract class DefaultGrammars
 "source.bsl" => "bsl",
 "source.c" => "c",
 "source.cadence" => "cadence",
-"source.cairo" => "cairo",
+"source.cairo0" => "cairo",
 "source.clar" => "clarity",
 "source.clojure" => "clojure",
 "source.cmake" => "cmake",

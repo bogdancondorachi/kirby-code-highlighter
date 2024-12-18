@@ -7,6 +7,7 @@ use Kirby\Toolkit\Str;
 
 Kirby::plugin('bogdancondorachi/code-highlighter', [
   'options' => [
+    'language' => 'text',
     'theme' => 'github-dark-dimmed',
     'gutter' => false,
     'block' => [
@@ -48,6 +49,23 @@ Kirby::plugin('bogdancondorachi/code-highlighter', [
         array_map(fn(Theme $theme) => $theme->value, Theme::cases()),
         array_map(fn(Theme $theme) => Str::ucwords(Str::replace($theme->value, '-', ' ')), Theme::cases())
       )
+    ]
+  ],
+
+  'api' => [
+    'routes' => [
+      [
+        'pattern' => 'code-highlighter',
+        'action'  => function () {
+          $options = [
+            'lang'   => option('bogdancondorachi.code-highlighter.language'),
+            'theme'  => option('bogdancondorachi.code-highlighter.theme'),
+            'gutter' => option('bogdancondorachi.code-highlighter.gutter'),
+          ];
+
+          return $options;
+        }
+      ]
     ]
   ],
 
