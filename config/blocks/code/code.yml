@@ -1,7 +1,7 @@
 name: field.blocks.code.name
 icon: code
 wysiwyg: true
-preview: code
+preview: codeHighlighter
 fields:
   code:
     label: field.blocks.code.name

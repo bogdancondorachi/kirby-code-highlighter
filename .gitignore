@@ -2,5 +2,8 @@
 .DS_Store
 
 # Development and Temporary files
+/node_modules
 /tests
+index.dev.mjs
 composer.lock
+package-lock.json
