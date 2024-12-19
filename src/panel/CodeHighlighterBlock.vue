@@ -4,11 +4,11 @@
     <k-bar class="k-block-type-code-highlighter-toolbar">
       <div>
         <!-- Language Picker -->
-        <k-button icon="code" :dropdown="true" @click="$refs.languages.toggle()">
+        <k-button icon="code" :dropdown="true" @click="$refs.language.toggle()">
           {{ languageLabel }}
         </k-button>
         <k-picklist-dropdown
-          ref="languages"
+          ref="language"
           :multiple="false"
           :options="languages"
           :search="{ placeholder: 'Select a language...'}"
@@ -17,11 +17,11 @@
         />
 
         <!-- Theme Picker -->
-        <k-button icon="palette" :dropdown="true" @click="$refs.themes.toggle()">
+        <k-button icon="palette" :dropdown="true" @click="$refs.theme.toggle()">
           {{ themeLabel }}
         </k-button>
         <k-picklist-dropdown
-          ref="themes"
+          ref="theme"
           :multiple="false"
           :options="themes"
           :search="{ placeholder: 'Select a theme...'}"
@@ -42,11 +42,14 @@
       <span v-html="highlightedCode"></span>
 
       <k-textarea-input
-        v-model="content.code"
-        spellcheck="false"
+        ref="code"
         :buttons="false"
+        :disabled="disabled"
         :placeholder="placeholder"
-        @input="highlightCode"
+        :spellcheck="false"
+        :value="content.code"
+        font="monospace"
+        @input="handleInput"
       />
     </div>
   </div>
@@ -136,10 +139,15 @@ export default {
     highlightCode() {
       if (!this.highlighter) return;
 
-      this.highlightedCode = this.highlighter.codeToHtml(this.content.code || " ", {
+      this.highlightedCode = this.highlighter.codeToHtml(this.content.code + " ", {
         lang: this.content.language,
         theme: this.content.theme,
       });
+    },
+
+    handleInput(event) {
+      this.update({ code: event });
+      this.highlightCode();
     },
 
     getLabel(options, value) {
@@ -192,11 +200,9 @@ export default {
   &-editor {
     position: relative;
     min-width: 100%;
-    min-height: 4.25rem;
 
     .shiki,
     .k-textarea-input {
-      font-family: var(--font-mono);
       line-height: 1.5;
       padding: .75rem;
     }
