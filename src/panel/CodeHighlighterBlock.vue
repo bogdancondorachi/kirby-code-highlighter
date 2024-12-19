@@ -32,7 +32,7 @@
 
       <!-- Copy Button -->
       <div>
-        <k-button v-if="loading" icon="loader" title="Loading ..." />
+        <k-button v-if="loading" icon="loader" />
         <k-button icon="copy" title="Copy" @click="copyToClipboard" />
       </div>
     </k-bar>
@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import { createHighlighter } from "https://esm.sh/shiki@1";
+import { createHighlighter, createJavaScriptRegexEngine } from "https://esm.sh/shiki";
 
 export default {
   data() {
@@ -61,7 +61,11 @@ export default {
       loading: true,
       highlighter: null,
       highlightedCode: null,
-      themeColors: { type: "dark", bg: "#000", fg: "#fff" },
+      themeColors: {
+        type: "dark",
+        bg: "#000",
+        fg: "#fff",
+      },
     };
   },
   computed: {
@@ -111,9 +115,12 @@ export default {
     async initHighlighter() {
       if (this.highlighter) this.highlighter.dispose();
 
+      const jsEngine = createJavaScriptRegexEngine({ forgiving: true })
+
       this.highlighter = await createHighlighter({
         langs: [this.content.language],
         themes: [this.content.theme],
+        engine: jsEngine,
       });
 
       this.setThemeColors();
