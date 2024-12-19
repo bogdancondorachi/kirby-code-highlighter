@@ -11,17 +11,31 @@ class GrammarRepository implements GrammarRepositoryInterface
 
     protected array $scopesToGrammar = DefaultGrammars::SCOPES_TO_NAMES;
 
+    // Mapping $alias to grammar $target
     protected array $aliases = [
-        'bash' => 'shellscript',
-        'sh' => 'shellscript',
-        'shell' => 'shellscript',
+        'clj' => 'clojure',
+        'pug' => 'jade',
+        'gql' => 'graphql',
         'js' => 'javascript',
-        'yml' => 'yaml',
-        'golang' => 'go',
-        'text' => 'txt',
-        'plaintext' => 'txt',
+        'kt' => 'kotlin',
+        'kts' => 'kotlin',
         'md' => 'markdown',
+        'objc' => 'objective-c',
+        'ps' => 'powershell',
         'py' => 'python',
+        'regex' => 'regexp',
+        'rb' => 'ruby',
+        'rs' => 'rust',
+        'bash' => 'shellscript',
+        'shell' => 'shellscript',
+        'sh' => 'shellscript',
+        'styl' => 'stylus',
+        'talon' => 'talonscript',
+        'ts' => 'typescript',
+        'plaintext' => 'txt',
+        'text' => 'txt',
+        'vim' => 'viml',
+        'yml' => 'yaml',
     ];
 
     public function get(string $name): ParsedGrammar
