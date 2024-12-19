@@ -3,7 +3,7 @@
   "description": "Server-side syntax highlighter for Kirby CMS.",
   "type": "kirby-plugin",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "homepage": "https://github.com/bogdancondorachi/kirby-code-highlighter",
   "authors": [
     {
