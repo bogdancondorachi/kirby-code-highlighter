@@ -5,11 +5,12 @@
 ![Dependency](https://img.shields.io/packagist/dependency-v/bogdancondorachi/kirby-code-highlighter/php?style=for-the-badge&label=PHP&labelColor=3d444d&color=7C72FF)
 
 > [!NOTE]
-> A server-side syntax highlighter plugin for Kirby CMS, powered by [Phiki](https://github.com/phikiphp/phiki), that uses TextMate grammars and VS Code themes to generate syntax-highlighted code within Kirby's code block and KirbyText.
+> A server-side syntax highlighter plugin for Kirby CMS, powered by [Phiki](https://github.com/phikiphp/phiki), that uses TextMate grammars and VS Code themes to generate syntax-highlighted code within Kirby's code block and KirbyText. Also with [Shiki](https://shiki.style) implementation for live code block preview inside the Kirby Panel!
 
 ## ✨ Key Features
 - ⚡ **Performance:** Fast and powerful syntax highlighting.
 - 🚀 **Integration:** Works with Kirby's code block and KirbyText.
+- 👁️ **Panel Preview:** Live code preview in the Kirby Panel.
 - 🌍 **Languages:** Over 200+ supported languages.
 - 🎨 **Themes:** Choose from 50+ VS Code themes.
 - 🔐 **Base64 Support:** Handles base64-encoded content.
@@ -66,13 +67,23 @@ Set the default theme:
 
 ```php
 'bogdancondorachi.code-highlighter' => [
-  'theme' => 'github-dark-dimmed',
+  'theme' => 'github-dark-default',
 ],
 ```
 *Check out the [supported](#explore-supported-languages-and-themes) themes*
 
+### Default Language
+Set the default language:
+
+```php
+'bogdancondorachi.code-highlighter' => [
+  'language' => 'text',
+],
+```
+*Check out the [supported](#explore-supported-languages-and-themes) languages*
+
 ### Light/Dark Dual Themes
-If you use light/dark mode on your website, you can set a default theme each individual mode:
+If you use light/dark mode on your website, you can set a default theme for each individual mode:
 
 ```php
 'bogdancondorachi.code-highlighter' => [
@@ -136,12 +147,12 @@ Customize the languages and themes options available in Kirby’s code block:
   'block.languages' => [
     'css' => 'CSS',
     'php' => 'PHP',
-    'js' => 'JavaScript',
+    'yml' => 'Yaml',
   ],
   'block.themes' => [
     'github-dark' => 'GitHub Dark',
     'github-light' => 'GitHub Light',
-    'plastic' => 'Plastic',
+    'vitesse-dark' => 'Vitesse Dark',
   ],
 ],
 ```
