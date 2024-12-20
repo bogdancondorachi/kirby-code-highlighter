@@ -1,6 +1,5 @@
 .github
 art
-meta
 node_modules
 resources/samples
 tests

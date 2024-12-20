@@ -1,0 +1,77 @@
+name: Update Grammars and Themes
+
+on:
+  schedule:
+    - cron: '0 23 * * 0'  # Runs at 11:00 PM (UTC) every Sunday
+  workflow_dispatch: # Allows manual trigger
+
+jobs:
+  update-sources:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Node.js for npm updates
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      # Step 3: Set up PHP and Composer
+      - name: Set up PHP and Composer
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: composer
+
+      # Step 4: Check for updates to Shiki repository
+      - name: Check for grammars and themes updates
+        run: |
+          git clone --depth=1 https://github.com/shikijs/textmate-grammars-themes temp-shiki
+          latest_commit=$(cd temp-shiki && git rev-parse HEAD)
+          rm -rf temp-shiki
+          echo "LATEST_COMMIT=$latest_commit" >> $GITHUB_ENV
+
+      # Step 5: Compare with current commit hash stored in a file
+      - name: Compare latest commit with stored commit
+        id: check-update
+        run: |
+          COMMIT_FILE="latest-shiki-commit.txt"
+          if [ -f "$COMMIT_FILE" ]; then
+            STORED_COMMIT=$(cat $COMMIT_FILE)
+          else
+            STORED_COMMIT=""
+          fi
+
+          if [ "$STORED_COMMIT" != "$LATEST_COMMIT" ]; then
+            echo "New updates found. Proceeding with update."
+            echo "update_required=true" >> $GITHUB_ENV
+          else
+            echo "No new updates. Skipping further steps."
+            echo "update_required=false" >> $GITHUB_ENV
+          fi
+
+      # Step 6: Run npm update and composer update-sources if changes are detected
+      - name: Run npm update and composer update-sources
+        if: env.update_required == 'true'
+        run: |
+          cd vendor/phiki/phiki
+          npm install
+          npm update
+          composer install
+          composer run update-sources
+          cd ../../../
+          echo "$LATEST_COMMIT" > latest-shiki-commit.txt
+
+      # Step 7: Commit and push changes
+      - name: Commit and push changes
+        if: env.update_required == 'true'
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "chore: update grammars and themes"
+          git push https://github-actions:${{ secrets.GH_TOKEN }}@github.com/bogdancondorachi/kirby-code-highlighter.git HEAD:main
