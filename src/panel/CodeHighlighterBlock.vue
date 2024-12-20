@@ -56,8 +56,6 @@
 </template>
 
 <script>
-import { createHighlighter, createJavaScriptRegexEngine } from "https://esm.sh/shiki";
-
 export default {
   data() {
     return {
@@ -118,9 +116,10 @@ export default {
     async initHighlighter() {
       if (this.highlighter) this.highlighter.dispose();
 
-      const jsEngine = createJavaScriptRegexEngine({ forgiving: true })
+      const shiki = await import("https://esm.sh/shiki");
+      const jsEngine = shiki.createJavaScriptRegexEngine({ forgiving: true });
 
-      this.highlighter = await createHighlighter({
+      this.highlighter = await shiki.createHighlighter({
         langs: [this.content.language],
         themes: [this.content.theme],
         engine: jsEngine,
