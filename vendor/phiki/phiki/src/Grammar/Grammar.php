@@ -176,6 +176,7 @@ case Kotlin = "kotlin";
 case Javascript = "javascript";
 case Qmldir = "qmldir";
 case Vhdl = "vhdl";
+case Polar = "polar";
 case Java = "java";
 case Rust = "rust";
 case Less = "less";
