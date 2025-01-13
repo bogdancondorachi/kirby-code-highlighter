@@ -112,7 +112,7 @@ In this case, you'll need to add one of the CSS snippet's to make it reactive to
     color: var(--phiki-dark);
     background-color: var(--phiki-dark-bg);
   }
-}
+}
 ```
 
 #### Class-based Dark Mode
@@ -127,7 +127,7 @@ html.dark .phiki,
 html.dark .phiki span {
   color: var(--phiki-dark);
   background-color: var(--phiki-dark-bg);
-}
+}
 ```
 
 ### Line Numbering
@@ -168,17 +168,19 @@ Further customize the block style to match your site's design. Here's an example
 .phiki {
   margin: 2rem 0;
   padding: 1rem;
-  font-size: .875rem;
+  font-size: 0.875rem;
   line-height: 1.5rem;
   overflow: auto;
-  border-radius: .25rem;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  border-radius: 0.25rem;
+  box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
 .phiki .line-number {
   margin-right: 1rem;
   text-align: right;
-}
+}
 ```
 
 ## 🙏 Credits

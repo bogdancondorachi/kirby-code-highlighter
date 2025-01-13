@@ -2,7 +2,7 @@ name: Update Grammars and Themes
 
 on:
   schedule:
-    - cron: '0 23 * * 0'  # Runs at 11:00 PM (UTC) every Sunday
+    - cron: "0 23 * * 0" # Runs at 11:00 PM (UTC) every Sunday
   workflow_dispatch: # Allows manual trigger
 
 jobs:
@@ -18,13 +18,13 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: "18"
 
       # Step 3: Set up PHP and Composer
       - name: Set up PHP and Composer
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'
+          php-version: "8.2"
           tools: composer
 
       # Step 4: Check for updates to Shiki repository

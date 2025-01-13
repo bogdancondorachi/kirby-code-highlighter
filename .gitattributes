@@ -4,6 +4,8 @@
 .gitignore export-ignore
 
 # Development files
+/.vscode
 /src/panel export-ignore
 .editorconfig export-ignore
+.eslint.config.mjs
 package.json export-ignore

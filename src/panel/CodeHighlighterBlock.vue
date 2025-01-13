@@ -11,7 +11,7 @@
           ref="language"
           :multiple="false"
           :options="languages"
-          :search="{ placeholder: 'Select a language...'}"
+          :search="{ placeholder: 'Select a language...' }"
           :value="content.language"
           @input="update({ language: $event })"
         />
@@ -24,7 +24,7 @@
           ref="theme"
           :multiple="false"
           :options="themes"
-          :search="{ placeholder: 'Select a theme...'}"
+          :search="{ placeholder: 'Select a theme...' }"
           :value="content.theme"
           @input="update({ theme: $event })"
         />
@@ -39,10 +39,9 @@
 
     <!-- Editor -->
     <div class="k-block-type-code-highlighter-editor" :class="editorClasses">
-      <span v-html="highlightedCode"></span>
+      <span v-html="highlightedCode" />
 
       <k-textarea-input
-        ref="code"
         :buttons="false"
         :disabled="disabled"
         :placeholder="placeholder"
@@ -104,6 +103,10 @@ export default {
     "content.language": "initHighlighter",
     "content.theme": "initHighlighter",
   },
+  async mounted() {
+    await this.fetchDefaultOptions();
+    await this.initHighlighter();
+  },
   methods: {
     async fetchDefaultOptions() {
       const { lang, theme, gutter } = await this.$api.get("code-highlighter");
@@ -114,7 +117,8 @@ export default {
     },
 
     async initHighlighter() {
-      if (this.highlighter) this.highlighter.dispose();
+      if (this.highlighter)
+        this.highlighter.dispose();
 
       const shiki = await import("https://esm.sh/shiki");
       const jsEngine = shiki.createJavaScriptRegexEngine({ forgiving: true });
@@ -136,9 +140,10 @@ export default {
     },
 
     highlightCode() {
-      if (!this.highlighter) return;
+      if (!this.highlighter)
+        return;
 
-      this.highlightedCode = this.highlighter.codeToHtml(this.content.code + " ", {
+      this.highlightedCode = this.highlighter.codeToHtml(`${this.content.code} `, {
         lang: this.content.language,
         theme: this.content.theme,
       });
@@ -150,7 +155,7 @@ export default {
     },
 
     getLabel(options, value) {
-      const option = options.find((option) => option.value === value);
+      const option = options.find(option => option.value === value);
       return option ? option.text : value;
     },
 
@@ -163,10 +168,6 @@ export default {
       });
     },
   },
-  async mounted() {
-    await this.fetchDefaultOptions();
-    await this.initHighlighter();
-  }
 };
 </script>
 
