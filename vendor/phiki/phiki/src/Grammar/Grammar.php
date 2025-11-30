@@ -217,6 +217,7 @@ case Hcl = "hcl";
 case Fish = "fish";
 case Logo = "logo";
 case Css = "css";
+case Openscad = "openscad";
 case Shaderlab = "shaderlab";
 case Http = "http";
 case AngularTs = "angular-ts";
