@@ -98,36 +98,28 @@ In this case, you'll need to add one of the CSS snippet's to make it reactive to
 
 #### Query-based Dark Mode
 ```css
-@media (prefers-color-scheme: light) {
-  .phiki,
-  .phiki span {
-    color: var(--phiki-light);
-    background-color: var(--phiki-light-bg);
-  }
-}
-
 @media (prefers-color-scheme: dark) {
   .phiki,
   .phiki span {
-    color: var(--phiki-dark);
-    background-color: var(--phiki-dark-bg);
+    color: var(--phiki-dark-color) !important;
+    background-color: var(--phiki-dark-background-color) !important;
+    font-style: var(--phiki-dark-font-style) !important;
+    font-weight: var(--phiki-dark-font-weight) !important;
+    text-decoration: var(--phiki-dark-text-decoration) !important;
   }
-}
+}
 ```
 
 #### Class-based Dark Mode
 ```css
-html.light .phiki,
-html.light .phiki span {
-  color: var(--phiki-light);
-  background-color: var(--phiki-light-bg);
-}
-
 html.dark .phiki,
 html.dark .phiki span {
-  color: var(--phiki-dark);
-  background-color: var(--phiki-dark-bg);
-}
+  color: var(--phiki-dark-color) !important;
+  background-color: var(--phiki-dark-background-color) !important;
+  font-style: var(--phiki-dark-font-style) !important;
+  font-weight: var(--phiki-dark-font-weight) !important;
+  text-decoration: var(--phiki-dark-text-decoration) !important;
+}
 ```
 
 ### Line Numbering
@@ -180,7 +172,8 @@ Further customize the block style to match your site's design. Here's an example
 .phiki .line-number {
   margin-right: 1rem;
   text-align: right;
-}
+}
+
 ```
 
 ## 🙏 Credits
@@ -189,3 +182,4 @@ Further customize the block style to match your site's design. Here's an example
 
 ## 📜 License
 [MIT License](./LICENSE) Copyright © 2024 [Bogdan Condorachi](https://github.com/bogdancondorachi)
+
