@@ -56,6 +56,7 @@ case Beancount = "beancount";
 case Json = "json";
 case Sas = "sas";
 case Llvm = "llvm";
+case Surrealql = "surrealql";
 case Gdshader = "gdshader";
 case Prisma = "prisma";
 case ObjectiveC = "objective-c";
