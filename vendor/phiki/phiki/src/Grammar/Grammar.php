@@ -13,6 +13,7 @@ case Rel = "rel";
 case Haml = "haml";
 case Wasm = "wasm";
 case Mipsasm = "mipsasm";
+case Odin = "odin";
 case Javascript = "javascript";
 case Coffee = "coffee";
 case Graphql = "graphql";
