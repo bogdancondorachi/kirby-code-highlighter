@@ -189,6 +189,7 @@ case Cpp = "cpp";
 case Tasl = "tasl";
 case VueHtml = "vue-html";
 case Sql = "sql";
+case Ron = "ron";
 case Ini = "ini";
 case Desktop = "desktop";
 case Nextflow = "nextflow";
