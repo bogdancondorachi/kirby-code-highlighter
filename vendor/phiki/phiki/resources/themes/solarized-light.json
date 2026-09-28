@@ -41,7 +41,7 @@
     "list.hoverBackground": "#DFCA8844",
     "list.inactiveSelectionBackground": "#D1CBB8",
     "minimap.selectionHighlight": "#EEE8D5",
-    "modernActivityBar.background": "#00000000",
+    "modernActivityBar.background": "#EEE8D5",
     "modernActivityBarItem.activeBackground": "#DFCA88",
     "notebook.cellEditorBackground": "#F7F0E0",
     "panel.border": "#DDD6C1",
